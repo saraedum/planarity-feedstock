@@ -20,9 +20,10 @@ build:
 
 requirements:
   build:
-    - toolchain
     - libtool
     - automake
+    - {{ compiler('c') }}
+  host:
 
 test:
   commands:
