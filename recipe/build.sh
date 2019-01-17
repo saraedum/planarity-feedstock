@@ -4,6 +4,7 @@ export CFLAGS="-g -O2 -fPIC $CFLAGS"
 
 if [[ "$(uname)" == MINGW* ]]; then
     CC=cl.exe
+    LD=link.exe
 else
     export CFLAGS="-g -O2 -fPIC $CFLAGS"
 fi
