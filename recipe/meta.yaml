@@ -16,12 +16,11 @@ source:
 
 build:
   number: 1000
-  skip: true  # [win]
 
 requirements:
   build:
-    - libtool
-    - automake
+    - libtool      # [unix]
+    - automake     # [unix]
     - {{ compiler('c') }}
   host:
 
