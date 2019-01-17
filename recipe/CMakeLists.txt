@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.6)
 project(planarity)
+enable_language(C)
 
-file(GLOB SOURCES c/*.cpp)
+file(GLOB SOURCES c/*.c)
 include_directories(c)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 set_target_properties(${PROJECT_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS True)
