@@ -22,12 +22,15 @@ requirements:
     - libtool      # [unix]
     - automake     # [unix]
     - {{ compiler('c') }}
+    - posix                  # [win]
+    - m2-libtool             # [win]
+    - m2-automake-wrapper    # [win]
   host:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h
-    - test -f ${PREFIX}/lib/lib{{ name }}.a
+    - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h   # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.a      # [unix]
     - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
     - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
 
