@@ -23,10 +23,7 @@ requirements:
     - automake     # [unix]
     - autoconf     # [unix]
     - {{ compiler('c') }}
-    - posix                  # [win]
-    - m2-autoconf            # [win]
-    - m2-libtool             # [win]
-    - m2-automake-wrapper    # [win]
+    - cmake        # [win]
   host:
 
 test:
