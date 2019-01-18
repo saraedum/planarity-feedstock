@@ -30,10 +30,10 @@ requirements:
 test:
   commands:
     - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h   # [unix]
-    - test -f ${PREFIX}/lib/lib{{ name }}.a      # [unix]
-    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
-    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
-    - test -f ${PREFIX}/lib/lib{{ name }}.dll    # [win]
+    - test -f ${PREFIX}/lib/lib{{ name }}.a               # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.dylib           # [osx]
+    - test -f ${PREFIX}/lib/lib{{ name }}.so              # [linux]
+    - test -f ${PREFIX}/Library/bin/{{ name }}.dll        # [win]
 
 about:
   home: https://github.com/graph-algorithms/edge-addition-planarity-suite
