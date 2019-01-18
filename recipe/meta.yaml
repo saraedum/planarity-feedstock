@@ -33,7 +33,9 @@ test:
     - test -f ${PREFIX}/lib/lib{{ name }}.a               # [unix]
     - test -f ${PREFIX}/lib/lib{{ name }}.dylib           # [osx]
     - test -f ${PREFIX}/lib/lib{{ name }}.so              # [linux]
-    - test -f ${LIBRARY_BIN}/{{ name }}.dll               # [win]
+    - if not exist %LIBRARY_BIN%/{{ name }}.dll exit 1    # [win]
+    - if not exist %LIBRARY_LIB%/{{ name }}.lib exit 1    # [win]
+    - if not exist %LIBRARY_INC%/{{ name }}/{{ name }}.h exit 1    # [win]
 
 about:
   home: https://github.com/graph-algorithms/edge-addition-planarity-suite
