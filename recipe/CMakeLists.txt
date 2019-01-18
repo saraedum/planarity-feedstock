@@ -7,10 +7,15 @@ list(FILTER SOURCES EXCLUDE REGEX "planarity.c|planarityCommandLine.c")
 
 include_directories(c)
 add_library(planarity ${SOURCES})
-set_target_properties(planarity PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS True)
+option(BUILD_SHARED_LIBS "Build shared library" OFF)
+
+if (BUILD_SHARED_LIBS)
+    set_target_properties(planarity PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS True)
+    target_compile_definitions(planarity PRIVATE PLANARITY_BUILD_DLL)
+endif()
 
 add_executable(planarity_exe c/planarity.c c/planarityCommandLine.c)
-target_link_libraries(planarity_exe planarity)
+target_link_libraries(planarity_exe PRIVATE planarity)
 set_target_properties(planarity_exe PROPERTIES OUTPUT_NAME planarity)
 
 install(TARGETS planarity planarity_exe
