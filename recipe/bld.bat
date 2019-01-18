@@ -5,13 +5,9 @@ cd build
 
 REM This is a fix for a CMake bug where it crashes because of the "/GL" flag
 REM See: https://gitlab.kitware.com/cmake/cmake/issues/16282
-set CFLAGS=%CFLAGS:-GL=%
+set "CFLAGS=-MD"
 
-if %VS_MAJOR% == 9 (
-    set "BUILD_SHARED_LIBS=no"
-) else (
-    set "BUILD_SHARED_LIBS=yes"
-)
+set "BUILD_SHARED_LIBS=no"
 
 cmake -G "%CMAKE_GENERATOR%" ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
