@@ -33,7 +33,7 @@ test:
     - test -f ${PREFIX}/lib/lib{{ name }}.a               # [unix]
     - test -f ${PREFIX}/lib/lib{{ name }}.dylib           # [osx]
     - test -f ${PREFIX}/lib/lib{{ name }}.so              # [linux]
-    - test -f ${PREFIX}/Library/bin/{{ name }}.dll        # [win]
+    - test -f ${LIBRARY_BIN}/{{ name }}.dll               # [win]
 
 about:
   home: https://github.com/graph-algorithms/edge-addition-planarity-suite
