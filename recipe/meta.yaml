@@ -16,7 +16,7 @@ source:
     - exclude-unistd.patch  # [win]
 
 build:
-  number: 1001
+  number: 1002
 
 requirements:
   build:
