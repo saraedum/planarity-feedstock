@@ -36,6 +36,7 @@ test:
     - if not exist %LIBRARY_BIN%/{{ name }}.dll exit 1    # [win]
     - if not exist %LIBRARY_LIB%/{{ name }}.lib exit 1    # [win]
     - if not exist %LIBRARY_INC%/{{ name }}/{{ name }}.h exit 1    # [win]
+    - planarity -h | exit 0
 
 about:
   home: https://github.com/graph-algorithms/edge-addition-planarity-suite
