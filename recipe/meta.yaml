@@ -13,24 +13,29 @@ source:
     # variables declared in headers should be marked extern
     # https://github.com/graph-algorithms/edge-addition-planarity-suite/pull/3
     - extern.patch
+    - exclude-unistd.patch  # [win]
 
 build:
-  number: 1000
-  skip: true  # [win]
+  number: 1001
 
 requirements:
   build:
-    - libtool
-    - automake
+    - libtool      # [unix]
+    - automake     # [unix]
+    - autoconf     # [unix]
     - {{ compiler('c') }}
+    - cmake        # [win]
   host:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h
-    - test -f ${PREFIX}/lib/lib{{ name }}.a
-    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
-    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
+    - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h   # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.a               # [unix]
+    - test -f ${PREFIX}/lib/lib{{ name }}.dylib           # [osx]
+    - test -f ${PREFIX}/lib/lib{{ name }}.so              # [linux]
+    - if not exist %LIBRARY_BIN%/{{ name }}.dll exit 1    # [win]
+    - if not exist %LIBRARY_LIB%/{{ name }}.lib exit 1    # [win]
+    - if not exist %LIBRARY_INC%/{{ name }}/{{ name }}.h exit 1    # [win]
 
 about:
   home: https://github.com/graph-algorithms/edge-addition-planarity-suite
