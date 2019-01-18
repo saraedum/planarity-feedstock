@@ -33,7 +33,6 @@ test:
     - test -f ${PREFIX}/lib/lib{{ name }}.a               # [unix]
     - test -f ${PREFIX}/lib/lib{{ name }}.dylib           # [osx]
     - test -f ${PREFIX}/lib/lib{{ name }}.so              # [linux]
-    - if not exist %LIBRARY_BIN%/{{ name }}.dll exit 1    # [win]
     - if not exist %LIBRARY_LIB%/{{ name }}.lib exit 1    # [win]
     - if not exist %LIBRARY_INC%/{{ name }}/{{ name }}.h exit 1    # [win]
     - planarity -h | exit 0

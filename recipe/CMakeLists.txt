@@ -6,7 +6,7 @@ file(GLOB SOURCES c/*.c)
 list(FILTER SOURCES EXCLUDE REGEX "planarity.c|planarityCommandLine.c")
 
 include_directories(c)
-add_library(planarity SHARED ${SOURCES})
+add_library(planarity ${SOURCES})
 set_target_properties(planarity PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS True)
 
 add_executable(planarity_exe c/planarity.c c/planarityCommandLine.c)
