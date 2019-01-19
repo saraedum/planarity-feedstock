@@ -7,7 +7,7 @@ REM This is a fix for a CMake bug where it crashes because of the "/GL" flag
 REM See: https://gitlab.kitware.com/cmake/cmake/issues/16282
 set "CFLAGS=-MD"
 
-set "BUILD_SHARED_LIBS=no"
+set "BUILD_SHARED_LIBS=yes"
 
 cmake -G "%CMAKE_GENERATOR%" ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
