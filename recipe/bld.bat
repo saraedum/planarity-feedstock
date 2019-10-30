@@ -9,7 +9,7 @@ set "CFLAGS=-MD"
 
 set "BUILD_SHARED_LIBS=yes"
 
-cmake -G "%CMAKE_GENERATOR%" ^
+cmake -G "NMake Makefiles" ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
       -DCMAKE_BUILD_TYPE=Release ^

@@ -26,6 +26,7 @@ requirements:
     - autoconf     # [unix]
     - {{ compiler('c') }}
     - cmake        # [win]
+    - make         # [unix]
   host:
 
 test:
