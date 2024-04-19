@@ -1,4 +1,4 @@
-{% set version = "3.0.0.5" %}
+{% set version = "3.0.2.0" %}
 {% set name = "planarity" %}
 
 package:
@@ -8,16 +8,16 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/graph-algorithms/edge-addition-planarity-suite/archive/Version_{{ version }}.tar.gz
-  sha256: a019eedf67087bba1996c8b9ad47a6f1cda166c2d8976f13bfcff5c0d23e5578
+  sha256: 40f4ee7bbd5d8535460c60fc0fc1f806b10909a1419618fd9235746a420a04c6
   patches:
     # variables declared in headers should be marked extern
-    # https://github.com/graph-algorithms/edge-addition-planarity-suite/pull/3
-    - extern.patch          # [unix]
     - dllexport.patch       # [win]
     - exclude-unistd.patch  # [win]
 
 build:
-  number: 1002
+  number: 0
+  run_exports:
+    - {{ pin_subpackage('planarity', max_pin='x.x.x') }}
 
 requirements:
   build:
@@ -41,7 +41,7 @@ test:
 
 about:
   home: https://github.com/graph-algorithms/edge-addition-planarity-suite
-  license: 3-clause BSD
+  license: BSD-3-Clause
   license_file: LICENSE.TXT
   summary: |
     This code project provides a library for implementing graph algorithms as well
@@ -51,3 +51,4 @@ about:
 extra:
   recipe-maintainers:
     - isuruf
+    - saraedum
