@@ -9,10 +9,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/graph-algorithms/edge-addition-planarity-suite/archive/Version_{{ version }}.tar.gz
   sha256: 40f4ee7bbd5d8535460c60fc0fc1f806b10909a1419618fd9235746a420a04c6
-  patches:
-    # variables declared in headers should be marked extern
-    - dllexport.patch       # [win]
-    - exclude-unistd.patch  # [win]
+  patches:  # [win]
+    - 0001-Adapt-for-Windows-build.patch  # [win]
 
 build:
   number: 0

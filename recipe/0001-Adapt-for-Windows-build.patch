@@ -1,0 +1,58 @@
+From 091a3edbd59bb5601df2acffb698849fb807193d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Fri, 19 Apr 2024 15:48:39 +0300
+Subject: [PATCH] Adapt for Windows build
+
+---
+ c/planarity.h            | 14 ++++++++++++--
+ c/planarityCommandLine.c |  2 --
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/c/planarity.h b/c/planarity.h
+index 0233a29..55cbf18 100644
+--- a/c/planarity.h
++++ b/c/planarity.h
+@@ -40,7 +40,17 @@ int commandLine(int argc, char *argv[]);
+ int legacyCommandLine(int argc, char *argv[]);
+ int menu();
+ 
+-extern char Mode,
++#if defined(_MSC_VER)
++#if defined(PLANARITY_BUILD_DLL)
++#define PLANARITY_DLL __declspec(dllexport)
++#else
++#define PLANARITY_DLL __declspec(dllimport)
++#endif
++#else
++#define PLANARITY_DLL
++#endif
++
++PLANARITY_DLL extern char Mode,
+      OrigOut,
+      EmbeddableOut,
+      ObstructedOut,
+@@ -51,7 +61,7 @@ void Reconfigure();
+ 
+ /* Low-level Utilities */
+ #define MAXLINE 1024
+-extern char Line[MAXLINE];
++PLANARITY_DLL extern char Line[MAXLINE];
+ 
+ void Message(char *message);
+ void ErrorMessage(char *message);
+diff --git a/c/planarityCommandLine.c b/c/planarityCommandLine.c
+index 954d280..82b9a9c 100644
+--- a/c/planarityCommandLine.c
++++ b/c/planarityCommandLine.c
+@@ -6,8 +6,6 @@ See the LICENSE.TXT file for licensing information.
+ 
+ #include "planarity.h"
+ 
+-#include <unistd.h>
+-
+ int runQuickRegressionTests(int argc, char *argv[]);
+ int callRandomGraphs(int argc, char *argv[]);
+ int callSpecificGraph(int argc, char *argv[]);
+-- 
+2.44.0
+
